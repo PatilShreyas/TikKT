@@ -5,7 +5,7 @@
 
 _**You can install preview application from here**_
 
-[![TikKT App](https://img.shields.io/github/v/release/PatilShreyas/TikKT?color=e2e2e2&label=TikKT%20App&logo=android&style=for-the-badge)](https://github.com/PatilShreyas/TikKT/releases/latest/download/app-debug.apk)
+[![TikKT App](https://img.shields.io/github/v/release/PatilShreyas/TikKT?color=eeeeee&label=TikKT%20App&logo=android&style=for-the-badge)](https://github.com/PatilShreyas/TikKT/releases/latest/download/app-debug.apk)
 
 ## :scroll: Description
 
