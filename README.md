@@ -3,6 +3,10 @@
 ![Workflow result](https://github.com/PatilShreyas/TikKT/workflows/Check/badge.svg)
 
 
+_**You can install preview application from here**_
+
+[![TikKT App](https://img.shields.io/github/v/release/PatilShreyas/TikKT?color=e2e2e2&label=TikKT%20App&logo=android&style=for-the-badge)](https://github.com/PatilShreyas/TikKT/releases/latest/download/app-debug.apk)
+
 ## :scroll: Description
 
 This is a simple Timer application built with Jetpack Compose for _#AndroidDevChallenge_.
