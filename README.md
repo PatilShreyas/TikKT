@@ -13,7 +13,11 @@ Animation Reference: https://lottiefiles.com/42981-sand-glass
 
 ## :camera_flash: Screenshots
 
-<img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
+You can watch video of the application [here](results/video.mp4)
+
+Main | Choose Duration | Timer running
+--- | --- | --- |
+![](results/screenshot_1.png) | ![](results/screenshot_2.png) | ![](results/screenshot_3.png)
 
 ## 👀 Preview Run
 
