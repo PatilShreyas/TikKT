@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package dev.shreyaspatil.tikkt.ui
 
 import androidx.compose.animation.AnimatedVisibility
@@ -43,118 +58,120 @@ import dev.shreyaspatil.tikkt.ui.theme.IrisBlue
 @Composable
 fun TikScreen() {
 
-    Scaffold(content = {
-        var secondsTimeout by remember { mutableStateOf(10) }
-        var tikTimer by remember { mutableStateOf(TikTimer(secondsTimeout * 1000L)) }
+    Scaffold(
+        content = {
+            var secondsTimeout by remember { mutableStateOf(10) }
+            var tikTimer by remember { mutableStateOf(TikTimer(secondsTimeout * 1000L)) }
 
-        val tikState by tikTimer.tikState.collectAsState()
+            val tikState by tikTimer.tikState.collectAsState()
 
-        var play by remember { mutableStateOf(false) }
-        var reset by remember { mutableStateOf(true) }
+            var play by remember { mutableStateOf(false) }
+            var reset by remember { mutableStateOf(true) }
 
-        var secondsRemaining by remember { mutableStateOf(10) }
-        when (tikState) {
-            is TikState.Ticking -> {
-                val millisRemaining = (tikState as TikState.Ticking).millisRemaining
-                secondsRemaining = (millisRemaining / 1000).toInt()
-                play = true
-                reset = false
+            var secondsRemaining by remember { mutableStateOf(10) }
+            when (tikState) {
+                is TikState.Ticking -> {
+                    val millisRemaining = (tikState as TikState.Ticking).millisRemaining
+                    secondsRemaining = (millisRemaining / 1000).toInt()
+                    play = true
+                    reset = false
+                }
+                TikState.Finished -> {
+                    secondsRemaining = 0
+                    play = false
+                }
+                TikState.Idle -> {
+                    secondsRemaining = secondsTimeout
+                    reset = true
+                    play = false
+                }
             }
-            TikState.Finished -> {
-                secondsRemaining = 0
-                play = false
-            }
-            TikState.Idle -> {
-                secondsRemaining = secondsTimeout
-                reset = true
-                play = false
-            }
-        }
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
 
-            Spacer(modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.size(16.dp))
 
-            Text(
-                text = "$secondsRemaining",
-                style = MaterialTheme.typography.h2,
-                fontFamily = FontFamily.Serif
-            )
+                Text(
+                    text = "$secondsRemaining",
+                    style = MaterialTheme.typography.h2,
+                    fontFamily = FontFamily.Serif
+                )
 
-            Spacer(modifier = Modifier.size(32.dp))
+                Spacer(modifier = Modifier.size(32.dp))
 
-            TikLottieAnimation(
-                modifier = Modifier.height(300.dp),
-                play = play,
-                duration = secondsTimeout,
-                reset = reset
-            )
+                TikLottieAnimation(
+                    modifier = Modifier.height(300.dp),
+                    play = play,
+                    duration = secondsTimeout,
+                    reset = reset
+                )
 
-            Spacer(modifier = Modifier.size(32.dp))
+                Spacer(modifier = Modifier.size(32.dp))
 
-            TikControls(
-                ticking = play,
-                onStart = { tikTimer.start() },
-                onStop = { tikTimer.cancel() }
-            )
+                TikControls(
+                    ticking = play,
+                    onStart = { tikTimer.start() },
+                    onStop = { tikTimer.cancel() }
+                )
 
-            Spacer(modifier = Modifier.size(32.dp))
+                Spacer(modifier = Modifier.size(32.dp))
 
-            var changeTime by remember { mutableStateOf(false) }
+                var changeTime by remember { mutableStateOf(false) }
 
-            if (!play) {
-                AnimatedVisibility(visible = !changeTime) {
-                    Button(onClick = { changeTime = changeTime.not() }) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Icon(Icons.Default.ChangeCircle, contentDescription = "Change?")
-                            Spacer(modifier = Modifier.size(4.dp))
-                            Text(text = "Change time?")
+                if (!play) {
+                    AnimatedVisibility(visible = !changeTime) {
+                        Button(onClick = { changeTime = changeTime.not() }) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Icon(Icons.Default.ChangeCircle, contentDescription = "Change?")
+                                Spacer(modifier = Modifier.size(4.dp))
+                                Text(text = "Change time?")
+                            }
                         }
                     }
-                }
 
-                AnimatedVisibility(visible = changeTime) {
-                    LazyRow(
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        for (seconds in 10..200 step 10) {
-                            item {
-                                Box(
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(16.dp))
-                                        .background(IrisBlue)
-                                        .clickable {
-                                            tikTimer = TikTimer(seconds * 1000L)
-                                            secondsRemaining = seconds
-                                            secondsTimeout = seconds
-                                            changeTime = changeTime.not()
+                    AnimatedVisibility(visible = changeTime) {
+                        LazyRow(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(16.dp)
+                        ) {
+                            for (seconds in 10..200 step 10) {
+                                item {
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .background(IrisBlue)
+                                            .clickable {
+                                                tikTimer = TikTimer(seconds * 1000L)
+                                                secondsRemaining = seconds
+                                                secondsTimeout = seconds
+                                                changeTime = changeTime.not()
+                                            }
+                                    ) {
+                                        Row(modifier = Modifier.padding(8.dp)) {
+                                            Text(
+                                                "${seconds}s",
+                                                style = MaterialTheme.typography.body2,
+                                                color = Color.White,
+                                                modifier = Modifier.padding(2.dp)
+                                            )
                                         }
-                                ) {
-                                    Row(modifier = Modifier.padding(8.dp)) {
-                                        Text(
-                                            "${seconds}s",
-                                            style = MaterialTheme.typography.body2,
-                                            color = Color.White,
-                                            modifier = Modifier.padding(2.dp)
-                                        )
                                     }
+                                    Spacer(modifier = Modifier.size(8.dp))
                                 }
-                                Spacer(modifier = Modifier.size(8.dp))
                             }
                         }
                     }
                 }
             }
         }
-    })
+    )
 }
 
 @Composable
