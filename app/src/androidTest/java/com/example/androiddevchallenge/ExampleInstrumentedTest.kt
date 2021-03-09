@@ -15,8 +15,12 @@
  */
 package com.example.androiddevchallenge
 
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import dev.shreyaspatil.tikkt.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,8 +30,13 @@ import org.junit.runner.RunWith
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+
+@ExperimentalFoundationApi
+@ExperimentalAnimationApi
+@ExperimentalComposeUiApi
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 

@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TikKT">
         <activity
-            android:name=".MainActivity"
+            android:name="dev.shreyaspatil.tikkt.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.TikKT.NoActionBar">
             <intent-filter>
