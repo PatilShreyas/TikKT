@@ -1,27 +1,31 @@
-# Template repository
+# TikKT ⌛
 
-Template repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge).
+![Workflow result](https://github.com/PatilShreyas/TikKT/workflows/Check/badge.svg)
 
-## Getting started
-Copy this repository by pressing the "Use this template" button in Github.
-Clone your repository and open it in the latest [Android Studio (Canary build)](https://developer.android.com/studio/preview).
 
-## Submission requirements
-- Follow the challenge description on the project website: [developer.android.com/dev-challenge](https://developer.android.com/dev-challenge)
-- All UI should be written using Jetpack Compose
-- The Github Actions workflow should complete successfully
-- Include two screenshots of your submission in the [results](results) folder. The names should be
-  screenshot_1.png and screenshot_2.png.
-- Include a screen record of your submission in the [results](results) folder. The name should be
-  video.mp4
-- Replace the contents of [README.md](README.md) with the contents of [README-template.md](README-template.md) and fill out the template.
+_**You can install preview application from here**_
 
-## Code formatting
-The CI uses [Spotless](https://github.com/diffplug/spotless) to check if your code is formatted correctly and contains the right licenses.
-Internally, Spotless uses [ktlint](https://github.com/pinterest/ktlint) to check the formatting of your code.
-To set up ktlint correctly with Android Studio, follow one of the [listed setup options](https://github.com/pinterest/ktlint#-with-intellij-idea).
+[![TikKT App](https://img.shields.io/github/v/release/PatilShreyas/TikKT?color=e2e2e2&label=TikKT%20App&logo=android&style=for-the-badge)](https://github.com/PatilShreyas/TikKT/releases/latest/download/app-debug.apk)
 
-Before committing your code, run `./gradlew app:spotlessApply` to automatically format your code.
+## :scroll: Description
+
+This is a simple Timer application built with Jetpack Compose for _#AndroidDevChallenge_.
+It includes a sand timer animation for good look and feel.
+The implementation includes use of Lottie Animation Library.
+
+Animation Reference: https://lottiefiles.com/42981-sand-glass
+
+## :camera_flash: Screenshots
+
+You can watch video of the application [here](results/video.mp4)
+
+Main | Choose Duration | Timer running
+--- | --- | --- |
+![](results/screenshot_1.png) | ![](results/screenshot_2.png) | ![](results/screenshot_3.png)
+
+## 👀 Preview Run
+
+<img src="/results/tikkt.gif" width="350">
 
 ## License
 ```
